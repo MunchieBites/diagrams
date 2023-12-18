@@ -1,0 +1,65 @@
+---
+title: Munchie ERD
+---
+
+erDiagram
+    USER {
+        int id
+        varchar name
+        varchar email
+        varchar password
+        varchar phone
+        varchar address
+        varchar city
+        varchar state
+        varchar zip
+        varchar country
+        varchar role
+    }
+    MUNCHIE {
+        int id
+        varchar name
+        varchar description
+        varchar image
+        double price
+        int quantity
+        int user_id
+    }
+    RESTAURANT{
+        int id
+        varchar name
+        varchar description
+        varchar image
+        varchar phone
+        varchar address
+        varchar city
+        varchar state
+        varchar zip
+    }
+    FOOD {
+        int id
+        varchar name
+        varchar description
+        varchar image
+        double price
+        int quantity
+        int restaurant_id
+    }
+    DEALS {
+        int id
+        varchar name
+        varchar description
+        varchar image
+    }
+    REVIEW {
+        int id
+        varchar description
+        int rating
+    }
+    
+    REVIEW }o--|| RESTAURANT : "has"
+    DEALS }o--|| RESTAURANT : "offers"
+    FOOD }|--|| RESTAURANT : "sells"
+    MUNCHIE }|..|| USER : "owns"
+    REVIEW }|--|| USER : "wrote"
+    MUNCHIE }o--|| FOOD : "contains"
